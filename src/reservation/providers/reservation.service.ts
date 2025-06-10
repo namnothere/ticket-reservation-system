@@ -1,10 +1,10 @@
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, DataSource } from 'typeorm';
-import { Reservation, ReservationStatus } from './entities/reservation.entity';
-import { Event } from '../event/entities/event.entity';
-import { CreateReservationDto } from './dtos/create-reservation.dto';
-import { SeatService } from '../seat/seat.service';
+import { Reservation, ReservationStatus } from '../entities/reservation.entity';
+import { Event } from '../../event/entities/event.entity';
+import { CreateReservationDto } from '../dtos/create-reservation.dto';
+import { SeatService } from '../../seat/seat.service';
 
 @Injectable()
 export class ReservationService {

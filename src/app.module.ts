@@ -42,24 +42,24 @@ import { ReservationModule } from './reservation/reservation.module';
       renderPath: '/',
     }),
     // Service Modules
-    AuthModule, // Global for Middleware
-    CommonModule, // Global
-    BaseModule,
-    SampleModule,
-    GqlModule,
-    DebugSampleModule,
-    // Module Router
-    // https://docs.nestjs.com/recipes/router-module
-    RouterModule.register([
-      {
-        path: 'test',
-        module: SampleModule,
-      },
-      {
-        path: 'test',
-        module: DebugSampleModule,
-      },
-    ]),
+    // AuthModule, // Global for Middleware
+    // CommonModule, // Global
+    // BaseModule,
+    // SampleModule,
+    // GqlModule,
+    // DebugSampleModule,
+    // // Module Router
+    // // https://docs.nestjs.com/recipes/router-module
+    // RouterModule.register([
+    //   {
+    //     path: 'test',
+    //     module: SampleModule,
+    //   },
+    //   {
+    //     path: 'test',
+    //     module: DebugSampleModule,
+    //   },
+    // ]),
     EventModule,
     ReservationModule,
   ],

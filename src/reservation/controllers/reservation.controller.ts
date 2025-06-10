@@ -1,5 +1,5 @@
 import { Controller, Post, Delete, Get, Body, Param, HttpCode, HttpStatus } from '@nestjs/common';
-import { ReservationService } from '../reservation.service';
+import { ReservationService } from '../providers/reservation.service';
 import { CreateReservationDto } from '../dtos/create-reservation.dto';
 
 @Controller()

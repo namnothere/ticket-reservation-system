@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ReservationService } from './reservation.service';
+import { ReservationService } from './providers';
 import * as controllers from './controllers';
 import { Reservation } from './entities';
 import { Event } from '../event/entities';
