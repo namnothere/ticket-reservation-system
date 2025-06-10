@@ -28,7 +28,7 @@ export class Seat {
   @Column({ nullable: true })
   reservationId: string;
 
-  @ManyToOne(() => Event)
+  @ManyToOne(() => Event, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'eventId' })
   event: Event;
 

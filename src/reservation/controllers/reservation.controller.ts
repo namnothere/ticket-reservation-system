@@ -1,6 +1,6 @@
 import { Controller, Post, Delete, Get, Body, Param, HttpCode, HttpStatus } from '@nestjs/common';
-import { ReservationService } from './reservation.service';
-import { CreateReservationDto } from './dtos/create-reservation.dto';
+import { ReservationService } from '../reservation.service';
+import { CreateReservationDto } from '../dtos/create-reservation.dto';
 
 @Controller()
 export class ReservationController {
@@ -25,9 +25,9 @@ export class ReservationController {
     await this.reservationService.cancel(id);
   }
 
-  @Get('events/:eventId')
-  @HttpCode(HttpStatus.OK)
-  async getEventAvailability(@Param('eventId') eventId: string) {
-    return this.reservationService.getEventAvailability(eventId);
-  }
+  // @Get('events/:eventId')
+  // @HttpCode(HttpStatus.OK)
+  // async getEventAvailability(@Param('eventId') eventId: string) {
+  //   return this.reservationService.getEventAvailability(eventId);
+  // }
 } 

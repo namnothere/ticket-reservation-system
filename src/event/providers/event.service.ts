@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Event } from '../entities/event.entity';
@@ -44,7 +44,22 @@ export class EventService {
     return `This action updates a #${id} event`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} event`;
+  async remove(id: string) {
+    const event = await this.eventRepository.findOne({
+      where: { id },
+      relations: ['reservations'],
+    });
+
+    if (!event) {
+      throw new NotFoundException('Event not found');
+    }
+
+    if (event.reservations.length > 0) {
+      throw new BadRequestException('Event has reservations');
+    }
+
+    await this.eventRepository.delete(id);
+
+    return event;
   }
 }

@@ -1,11 +1,9 @@
-import { IsArray, IsUUID, ArrayMinSize, IsNumber, Min } from 'class-validator';
+import { IsArray, IsUUID, ArrayMinSize, IsNumber, Min, IsNotEmpty, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateReservationDto {
-  @IsUUID()
-  eventId: string;
-
-  @IsUUID()
+  @IsNotEmpty()
+  @IsString()
   userId: string;
 
   @IsArray()
@@ -13,5 +11,5 @@ export class CreateReservationDto {
   @Min(1, { each: true })
   @ArrayMinSize(1)
   @Type(() => Number)
-  seatNumbers: number[];
+  seats: number[];
 } 

@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { EventService } from '../providers/event.service';
-import { CreateEventDto } from '../dtos/create-event.dto';
-import { UpdateEventDto } from '../dtos/update-event.dto';
+import { CreateEventDto, UpdateEventDto } from '../dtos';
 
 @Controller('events')
 export class EventController {
@@ -34,6 +33,6 @@ export class EventController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.eventService.remove(+id);
+    return this.eventService.remove(id);
   }
 }

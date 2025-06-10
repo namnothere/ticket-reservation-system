@@ -13,6 +13,7 @@ import { SampleModule as DebugSampleModule } from './debug';
 import { GqlModule } from './gql';
 import { SampleModule } from './sample';
 import { EventModule } from './event/event.module';
+import { ReservationModule } from './reservation/reservation.module';
 
 @Module({
   imports: [
@@ -60,6 +61,7 @@ import { EventModule } from './event/event.module';
       },
     ]),
     EventModule,
+    ReservationModule,
   ],
   providers: [
     // Global Guard, Authentication check on all routers

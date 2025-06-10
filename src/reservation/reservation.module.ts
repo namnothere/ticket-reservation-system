@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ReservationService } from './reservation.service';
-import { ReservationController } from './reservation.controller';
+import * as controllers from './controllers';
 import { Reservation } from './entities';
 import { Event } from '../event/entities';
 import { SeatModule } from '../seat/seat.module';
@@ -11,7 +11,7 @@ import { SeatModule } from '../seat/seat.module';
     TypeOrmModule.forFeature([Reservation, Event]),
     SeatModule
   ],
-  controllers: [ReservationController],
+  controllers: [...Object.values(controllers)],
   providers: [ReservationService],
   exports: [ReservationService]
 })

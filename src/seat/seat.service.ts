@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, QueryRunner } from 'typeorm';
 import { Seat, SeatStatus } from './entities/seat.entity';
 import { In } from 'typeorm';
 
@@ -26,8 +26,10 @@ export class SeatService {
     return this.seatRepository.save(seats);
   }
 
-  async reserveSeats(seatNumbers: number[], eventId: string, reservationId: string): Promise<Seat[]> {
-    const seats = await this.seatRepository.find({
+  async reserveSeats(seatNumbers: number[], eventId: string, reservationId: string, queryRunner?: QueryRunner): Promise<Seat[]> {
+    const repository = queryRunner ? queryRunner.manager.getRepository(Seat) : this.seatRepository;
+    
+    const seats = await repository.find({
       where: {
         seatNumber: In(seatNumbers),
         eventId,
@@ -45,11 +47,13 @@ export class SeatService {
       seat.reservationId = reservationId;
     });
 
-    return this.seatRepository.save(seats);
+    return repository.save(seats);
   }
 
-  async releaseSeats(reservationId: string): Promise<void> {
-    const seats = await this.seatRepository.find({
+  async releaseSeats(reservationId: string, queryRunner?: QueryRunner): Promise<void> {
+    const repository = queryRunner ? queryRunner.manager.getRepository(Seat) : this.seatRepository;
+    
+    const seats = await repository.find({
       where: { reservationId }
     });
 
@@ -58,7 +62,7 @@ export class SeatService {
       seat.reservationId = null;
     });
 
-    await this.seatRepository.save(seats);
+    await repository.save(seats);
   }
 
   async getEventSeats(eventId: string): Promise<Seat[]> {
