@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // https://docs.nestjs.com/cli/scripts#build
+      // https://nodejs.org/api/packages.html#imports
+      "#entity/*": ["./src/entity/*"],
+    },
+    "target": "es2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "incremental": true,
+    "declaration": true,
+    "newLine": "lf",
+    "strict": true,
+    "strictNullChecks": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "removeComments": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    // https://github.com/Microsoft/TypeScript/issues/2577
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["typings/global.d.ts", "src/**/*", "test/**/*", "bin/**/*"],
+  "exclude": ["node_modules"]
+}
