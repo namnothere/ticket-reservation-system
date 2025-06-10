@@ -10,6 +10,9 @@ export const config = {
     database: process.env.DB_NAME || 'dbname',
     extra: {
       connectionLimit: 10,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     },
     autoLoadEntities: true,
   },

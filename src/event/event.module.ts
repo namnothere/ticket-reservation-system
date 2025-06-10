@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { EventService } from './event.service';
-import { EventController } from './event.controller';
+import { EventService } from './providers/event.service';
+import * as controllers from './controllers';
 import { Event } from './entities/event.entity';
 import { SeatModule } from '../seat/seat.module';
 
@@ -10,7 +10,7 @@ import { SeatModule } from '../seat/seat.module';
     TypeOrmModule.forFeature([Event]),
     SeatModule
   ],
-  controllers: [EventController],
+  controllers: [...Object.values(controllers)],
   providers: [EventService],
   exports: [EventService]
 })
