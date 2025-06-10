@@ -1,0 +1,1 @@
+docker run --rm -e HOST=host.docker.internal -v ${PWD}:/load-test grafana/k6 run /load-test/reservation-load-test.js --out json=results.json

@@ -36,8 +36,17 @@ export class EventService {
     return events;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} event`;
+  async findOne(id: string) {
+    const event = await this.eventRepository.findOne({
+      where: { id },
+      relations: ['seats'],
+    });
+
+    if (!event) {
+      throw new NotFoundException('Event not found');
+    }
+
+    return event;
   }
 
   update(id: number, updateEventDto: UpdateEventDto) {
