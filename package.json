@@ -20,6 +20,7 @@
     "migrate:down": "typeorm-ts-node-commonjs migration:revert -d bin/ormconfig.ts",
     "start": "node dist/app",
     "start:dev": "nest start --watch",
+    "start:prod": "node dist/app",
     "start:debug": "nest start --debug --watch",
     "start:repl": "nest start --entryFile repl",
     "test": "jest --detectOpenHandles -i",

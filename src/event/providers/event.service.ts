@@ -29,7 +29,11 @@ export class EventService {
   }
 
   findAll() {
-    return `This action returns all event`;
+    const events = this.eventRepository.find({
+      relations: ['seats'],
+    });
+
+    return events;
   }
 
   findOne(id: number) {
